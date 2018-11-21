@@ -33,6 +33,13 @@ public class MyMvcConfig implements WebMvcConfigurer {
             }
 
 
+            /**
+             *
+             *  添加拦截的路径："/**" ；
+             *  和不被拦截的路径："/","/index.html","/user/login","/webjars/**","/asserts/**" 。
+             *
+             * @param registry
+             */
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new LoginHandlerInteror()).addPathPatterns("/**")

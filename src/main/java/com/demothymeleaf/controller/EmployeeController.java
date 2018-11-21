@@ -7,8 +7,7 @@ import com.demothymeleaf.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Map;
@@ -37,9 +36,34 @@ public class EmployeeController {
 
     @PostMapping(value = "/emp")
     public String addPage(Employee employee){
-        System.out.println("--: "+employee.toString());
         employeeDao.save(employee);
         return  "redirect:/emps";
     }
 
+    @GetMapping("/emp/{id}")
+    public  String toEditPage(@PathVariable("id") Integer id , Model model){
+        System.out.println("---->  "+id);
+        Employee employee = employeeDao.get(id);
+        System.out.println("employee:  "+employee);
+
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("depts",departments);
+
+        model.addAttribute("emp",employee);
+        return "emps/add";
+    }
+
+   // 修改员工
+    @PutMapping("/emp")
+    public String updateEmployee(Employee employee){
+        employeeDao.save(employee);
+        return "redirect:/emps";
+    }
+
+    //员工删除
+    @DeleteMapping("/emp/{id}")
+    public String deleteEmployee(@PathVariable("id") Integer id){
+        employeeDao.delete(id);
+        return "redirect:/emps";
+    }
 }
