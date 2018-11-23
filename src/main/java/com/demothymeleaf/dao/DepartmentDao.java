@@ -1,10 +1,12 @@
 package com.demothymeleaf.dao;
 
 import com.demothymeleaf.entities.Department;
+import com.demothymeleaf.entities.Employee;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -29,5 +31,10 @@ public class DepartmentDao {
 	public Department getDepartment(Integer id){
 		return departments.get(id);
 	}
-	
+
+
+
+
+
+
 }

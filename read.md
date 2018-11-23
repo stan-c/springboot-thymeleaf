@@ -6,5 +6,22 @@ th:replace
           <div th:replace="~{common/bar::#sidebar(activeUri='main.html')}"></div>_
 值传递： 通用值传递 sidebar&activeUri=main.html
         thymeleaf sidebar(activeUri='main.html')
+        
+        
+        
+## 手动配置
+demo:
+  datasource:
+    master:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db_master?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: xxx
+    slave1:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/db_slave1?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true
+      username: root
+      password: xxxx
 
+#### DynamicDataSourceConfiguration 文件中修改配置路径
     
