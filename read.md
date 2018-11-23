@@ -8,8 +8,10 @@ th:replace
         thymeleaf sidebar(activeUri='main.html')
         
         
-        
+<br/> 
+ 
 ## 手动配置
+```xml
 demo:
   datasource:
     master:
@@ -22,6 +24,10 @@ demo:
       url: jdbc:mysql://localhost:3306/db_slave1?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&allowMultiQueries=true
       username: root
       password: xxxx
+```
+ 
+<br/>
+``添加新数据库在 DynamicDataSourceConfiguration 中修改``
 
-#### DynamicDataSourceConfiguration 文件中修改配置路径
+
     
