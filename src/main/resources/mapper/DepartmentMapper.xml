@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demothymeleaf.dao.DepartmentMapper">
+    <resultMap id="base_result_map" type="com.demothymeleaf.entities.Department">
+        <id column="id" property="id"/>
+        <result column="createdDate" property="createdDate"/>
+        <result column="lastModifiedDate" property="lastModifiedDate"/>
+        <result column="version" property="version"/>
+
+        <result column="departmentName" property="departmentName"/>
+
+    </resultMap>
+
+
+    <sql id="base_sql">
+        id,createdDate,lastModifiedDate,version,departmentName
+    </sql>
+
+    <select id="getDepartments" resultMap="base_result_map">
+      select <include refid="base_sql"></include>
+      from department
+    </select>
+    
+    <select id="getDepartment" resultMap="base_result_map" parameterType="java.lang.Long" >
+        select <include refid="base_sql"></include>
+        from  department where  id = #{id}
+    </select>
+
+</mapper>

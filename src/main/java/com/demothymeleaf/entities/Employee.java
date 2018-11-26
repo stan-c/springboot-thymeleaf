@@ -6,25 +6,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Data
-public class Employee {
+public class Employee extends BasicDomain{
 
-	private Integer id;
     private String lastName;
 
     private String email;
     //1 male, 0 female
     private Integer gender;
-    private Department department;
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Long departmentId;
+    /***
+     *  @DateTimeFormat(pattern = "yyyy-MM-dd")
+     *  springboot 配置文件中使用了：
+     *  ## 时间格式处理 spring.mvc.date-format=yyyy-MM-dd HH:mm:ss ； 所以不配置。
+     */
     private Date birth;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getLastName() {
         return lastName;
@@ -50,13 +47,7 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 
     public Date getBirth() {
         return birth;
@@ -66,15 +57,21 @@ public class Employee {
         this.birth = birth;
     }
 
-    public Employee(Integer id, String lastName, String email, Integer gender,
-                    Department department) {
-        super();
-        this.id = id;
+    public Employee(Long id, Date createdDate, Date lastModifiedDate, int version, String lastName, String email, Integer gender, Long departmentId, Date birth) {
+        super(id, createdDate, lastModifiedDate, version);
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
-        this.department = department;
-        this.birth = new Date();
+        this.departmentId = departmentId;
+        this.birth = birth;
+    }
+
+    public Employee(String lastName, String email, Integer gender, Long departmentId, Date birth) {
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.departmentId = departmentId;
+        this.birth = birth;
     }
 
     public Employee() {
@@ -83,14 +80,15 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
-                ", lastName='" + lastName + '\'' +
+                "lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
-                ", department=" + department +
+                ", departmentId=" + departmentId +
                 ", birth=" + birth +
+                ", id=" + id +
+                ", createdDate=" + createdDate +
+                ", lastModifiedDate=" + lastModifiedDate +
+                ", version=" + version +
                 '}';
     }
-	
-	
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demothymeleaf.dao.EmployeeMapper">
+    <resultMap id="base_result_map" type="com.demothymeleaf.entities.Employee">
+        <id column="id" property="id"/>
+        <result column="createdDate" property="createdDate"/>
+        <result column="lastModifiedDate" property="lastModifiedDate"/>
+        <result column="version" property="version"/>
+
+        <result column="lastName" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="birth" property="birth"/>
+
+        <result column="departmentId" property="departmentId"/>
+    </resultMap>
+
+    <resultMap id="base_emp_dept" type="com.demothymeleaf.query.EmployeeQuery">
+        <id column="id" property="id"/>
+        <result column="createdDate" property="createdDate"/>
+        <result column="lastModifiedDate" property="lastModifiedDate"/>
+        <result column="version" property="version"/>
+
+        <result column="lastName" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="birth" property="birth"/>
+
+        <result column="departmentId" property="departmentId"/>
+        <result column="departmentName" property="departmentName"/>
+    </resultMap>
+
+    <sql id="base_sql">
+        id,createdDate,lastModifiedDate,version,lastName,email,gender,birth,departmentId
+    </sql>
+
+
+
+    <!--<select id="listAll" resultMap="base_result_map">
+        SELECT
+        <include refid="base_sql"/>
+        FROM employee
+    </select>-->
+
+    <insert id="saveEmp" parameterType="com.demothymeleaf.entities.Employee">
+        INSERT INTO employee
+        (createdDate, lastModifiedDate, version, lastName, email, gender,birth, departmentId)
+        VALUES
+        (#{createdDate},#{lastModifiedDate},#{version},#{lastName},#{email},#{gender},#{birth},#{departmentId})
+    </insert>
+
+    <select id="getAll" resultMap="base_emp_dept">
+      select emp.*,dept.departmentName
+      from employee emp
+      join department dept on dept.id= emp.departmentId
+      order  by createdDate desc
+    </select>
+
+    <select id="get"  resultMap="base_result_map" parameterType="java.lang.Long">
+      select * from employee where  id = #{id}
+    </select>
+    
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from  employee where  id = #{id}
+    </delete>
+
+    <update id="updateEmp">
+        update employee
+        set lastModifiedDate=now(),version=version+1,lastName=#{lastName},email=#{email},gender=#{gender},birth=#{birth},departmentId=#{departmentId}
+        where  id =#{id}
+    </update>
+
+</mapper>

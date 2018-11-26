@@ -2,19 +2,15 @@ package com.demothymeleaf.entities;
 
 import lombok.Data;
 
-@Data
-public class Department {
+import java.util.Date;
 
-	private Integer id;
+@Data
+public class Department extends  BasicDomain{
+
+
 	private String departmentName;
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getDepartmentName() {
 		return departmentName;
@@ -26,17 +22,13 @@ public class Department {
 
 	public Department() {
 	}
-	
-	public Department(int i, String string) {
-		this.id = i;
-		this.departmentName = string;
+
+	public Department(Long id, Date createdDate, Date lastModifiedDate, int version, String departmentName) {
+		super(id, createdDate, lastModifiedDate, version);
+		this.departmentName = departmentName;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Department [id=" + id + ", departmentName=" + departmentName + "]";
+	public Department(String departmentName) {
+		this.departmentName = departmentName;
 	}
-	
 }

@@ -5,7 +5,7 @@ import com.demothymeleaf.entities.Department;
 import java.util.List;
 
 public interface DepartmentService {
-    List<Department> listAll();
+    List<Department> getDepartments();
 
-    int insert(Department user);
+    Department getDepartment(Long id);
 }

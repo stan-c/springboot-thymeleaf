@@ -18,6 +18,10 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @MapperScan(basePackages = "") 数据源输出接口
+ *
+ */
 @MapperScan(basePackages = "com.demothymeleaf.dao")
 @Configuration
 public class DynamicDataSourceConfiguration {
