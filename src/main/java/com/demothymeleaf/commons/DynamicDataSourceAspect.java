@@ -35,6 +35,17 @@ public class DynamicDataSourceAspect {
         if (dataSourceKey == DataSourceKey.DB_OTHER) {
             LOG.info(String.format("设置数据源为  %s", DataSourceKey.DB_OTHER));
             DynamicDataSourceContextHolder.set(DataSourceKey.DB_OTHER);
+            return;
+        }
+        if(dataSourceKey == DataSourceKey.DB_SLAVE1){
+            LOG.info(String.format("设置数据源为  %s", DataSourceKey.DB_SLAVE1));
+            DynamicDataSourceContextHolder.set(DataSourceKey.DB_SLAVE1);
+            return;
+        }
+        if(dataSourceKey == DataSourceKey.DB_SLAVE2){
+            LOG.info(String.format("设置数据源为  %s", DataSourceKey.DB_SLAVE2));
+            DynamicDataSourceContextHolder.set(DataSourceKey.DB_SLAVE2);
+            return;
         }else {
             LOG.info(String.format("使用默认数据源  %s", DataSourceKey.DB_MASTER));
             DynamicDataSourceContextHolder.set(DataSourceKey.DB_MASTER);

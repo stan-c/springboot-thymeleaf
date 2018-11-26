@@ -1,5 +1,7 @@
 package com.demothymeleaf.service.impl;
 
+import com.demothymeleaf.annotation.TargetDataSource;
+import com.demothymeleaf.commons.DataSourceKey;
 import com.demothymeleaf.dao.EmployeeMapper;
 import com.demothymeleaf.entities.Employee;
 import com.demothymeleaf.query.EmployeeQuery;
@@ -22,6 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.saveEmp(employee);
     }
 
+    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public List<EmployeeQuery> getAll() {
         List<EmployeeQuery> list = employeeMapper.getAll();

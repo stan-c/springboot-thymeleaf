@@ -53,7 +53,7 @@
       select emp.*,dept.departmentName
       from employee emp
       join department dept on dept.id= emp.departmentId
-      order  by createdDate desc
+      order  by emp.id desc
     </select>
 
     <select id="get"  resultMap="base_result_map" parameterType="java.lang.Long">
