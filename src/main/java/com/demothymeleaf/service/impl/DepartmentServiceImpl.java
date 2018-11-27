@@ -16,14 +16,12 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentMapper departmentMapper;
 
-    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public List<Department> getDepartments() {
         List<Department> list = departmentMapper.getDepartments();
         return list;
     }
 
-    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public Department getDepartment(Long id) {
         if(id ==null){
@@ -31,6 +29,30 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         Department department = departmentMapper.getDepartment(id);
         return department;
+    }
+
+    @Override
+    public void saveDepartment(Department department) {
+        if(department.getId() != null){
+            throw  new RuntimeException("添加的数据已存在！");
+        }
+        departmentMapper.saveDepartment(department);
+    }
+
+    @Override
+    public void updateDepartment(Department department) {
+        if(department.getId() == null){
+            throw new RuntimeException("获取页面信息失败，请刷新页面重新操作！");
+        }
+        departmentMapper.updateDepartment(department);
+    }
+
+    @Override
+    public void deleteDeaprtment(Long id) {
+        if(id==null){
+            return;
+        }
+        departmentMapper.deleteDeaprtment(id);
     }
 
 

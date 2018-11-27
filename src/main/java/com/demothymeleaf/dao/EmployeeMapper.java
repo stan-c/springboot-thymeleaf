@@ -17,4 +17,6 @@ public interface EmployeeMapper {
 
      void updateEmp(Employee e);
 
+     Employee getDepartmentId(Long departmentId);
+
 }

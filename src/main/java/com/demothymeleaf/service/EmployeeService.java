@@ -20,4 +20,11 @@ public interface EmployeeService {
     void delete(Long id);
 
     void updateEmp(Employee employee);
+
+    /**
+     * 通过 DepartmentId 部门ID 获取对应的用户
+     * @param departmentId
+     * @return
+     */
+    Employee getDepartmentId(Long departmentId);
 }

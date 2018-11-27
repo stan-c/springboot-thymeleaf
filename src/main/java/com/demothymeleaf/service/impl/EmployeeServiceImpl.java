@@ -24,7 +24,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.saveEmp(employee);
     }
 
-    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public List<EmployeeQuery> getAll() {
         List<EmployeeQuery> list = employeeMapper.getAll();
@@ -34,7 +33,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         return list;
     }
 
-    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public Employee get(Long id) {
         Employee emp = employeeMapper.get(id);
@@ -57,5 +55,11 @@ public class EmployeeServiceImpl implements EmployeeService {
             return ;
         }
         employeeMapper.updateEmp(employee);
+    }
+
+    @Override
+    public Employee getDepartmentId(Long departmentId) {
+        employeeMapper.getDepartmentId(departmentId);
+        return null;
     }
 }

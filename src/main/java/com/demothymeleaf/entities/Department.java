@@ -5,7 +5,9 @@ import java.util.Date;
 
 public class Department extends  BasicDomain{
 
-
+	/**
+	 *  部门名称
+	 */
 	private String departmentName;
 
 

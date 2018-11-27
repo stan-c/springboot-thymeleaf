@@ -26,4 +26,21 @@
         from  department where  id = #{id}
     </select>
 
+    <select id="saveDepartment"  parameterType="com.demothymeleaf.entities.Department">
+        insert into department
+        (createdDate, lastModifiedDate, version, departmentName)
+        values
+        (now(),now(),0,#{departmentName})
+    </select>
+
+    <update id="updateDepartment">
+        update department
+        set lastModifiedDate=now(),version=version+1,departmentName=#{departmentName}
+        where  id =#{id}
+    </update>
+    <delete id="deleteDeaprtment" parameterType="java.lang.Long">
+        delete from department where id =#{id}
+    </delete>
+
+
 </mapper>

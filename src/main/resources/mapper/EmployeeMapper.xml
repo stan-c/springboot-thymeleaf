@@ -46,13 +46,13 @@
         INSERT INTO employee
         (createdDate, lastModifiedDate, version, lastName, email, gender,birth, departmentId)
         VALUES
-        (#{createdDate},#{lastModifiedDate},#{version},#{lastName},#{email},#{gender},#{birth},#{departmentId})
+        (now(),now(),0,#{lastName},#{email},#{gender},#{birth},#{departmentId})
     </insert>
 
     <select id="getAll" resultMap="base_emp_dept">
       select emp.*,dept.departmentName
       from employee emp
-      join department dept on dept.id= emp.departmentId
+      left join department dept on dept.id= emp.departmentId
       order  by emp.id desc
     </select>
 
@@ -69,5 +69,9 @@
         set lastModifiedDate=now(),version=version+1,lastName=#{lastName},email=#{email},gender=#{gender},birth=#{birth},departmentId=#{departmentId}
         where  id =#{id}
     </update>
+    <select id="getDepartmentId"  resultMap="base_result_map" parameterType="java.lang.Long">
+      select * from employee where  departmentId = #{id}
+    </select>
+
 
 </mapper>

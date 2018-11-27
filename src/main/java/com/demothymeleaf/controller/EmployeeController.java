@@ -1,7 +1,5 @@
 package com.demothymeleaf.controller;
 
-import com.demothymeleaf.dao.DepartmentMapper;
-import com.demothymeleaf.dao.EmployeeMapper;
 import com.demothymeleaf.entities.Department;
 import com.demothymeleaf.entities.Employee;
 import com.demothymeleaf.query.EmployeeQuery;
@@ -30,6 +28,11 @@ public class EmployeeController {
         return "emps/list";
     }
 
+    /**
+     * 跳转到用户添加页面
+     * @param model
+     * @return
+     */
     @GetMapping(value = "/emp")
     public String toAddPage(Model model){
         Collection<Department> departments = departmentDao.getDepartments();
@@ -37,17 +40,26 @@ public class EmployeeController {
         return "emps/add";
     }
 
+    /**
+     * 员工添加页面保存
+     * @param employee
+     * @return
+     */
     @PostMapping(value = "/emp")
     public String addPage(Employee employee){
         employeeDao.saveEmp(employee);
         return  "redirect:/emps";
     }
 
+    /**
+     *  跳转到用户信息编辑页面
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/emp/{id}")
     public  String toEditPage(@PathVariable("id") Long id , Model model){
         Employee employee = employeeDao.get(id);
-        System.out.println("employee:  "+employee);
-
         Collection<Department> departments = departmentDao.getDepartments();
         model.addAttribute("depts",departments);
 
