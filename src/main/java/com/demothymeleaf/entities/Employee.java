@@ -1,11 +1,8 @@
 package com.demothymeleaf.entities;
 
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
-@Data
+
 public class Employee extends BasicDomain{
 
     private String lastName;
@@ -20,8 +17,6 @@ public class Employee extends BasicDomain{
      *  ## 时间格式处理 spring.mvc.date-format=yyyy-MM-dd HH:mm:ss ； 所以不配置。
      */
     private Date birth;
-
-
 
     public String getLastName() {
         return lastName;
@@ -47,7 +42,13 @@ public class Employee extends BasicDomain{
         this.gender = gender;
     }
 
+    public Long getDepartmentId() {
+        return departmentId;
+    }
 
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
+    }
 
     public Date getBirth() {
         return birth;

@@ -1,14 +1,13 @@
 package com.demothymeleaf.entities;
 
-import lombok.Data;
-
 import java.util.Date;
 
-@Data
+
 public class Department extends  BasicDomain{
 
 
 	private String departmentName;
+
 
 
 

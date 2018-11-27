@@ -1,11 +1,9 @@
 package com.demothymeleaf.entities;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
+
 public abstract class BasicDomain implements Serializable {
 
     protected Long id;

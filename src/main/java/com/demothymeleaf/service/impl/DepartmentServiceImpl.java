@@ -1,5 +1,7 @@
 package com.demothymeleaf.service.impl;
 
+import com.demothymeleaf.annotation.TargetDataSource;
+import com.demothymeleaf.commons.DataSourceKey;
 import com.demothymeleaf.dao.DepartmentMapper;
 import com.demothymeleaf.entities.Department;
 import com.demothymeleaf.service.DepartmentService;
@@ -14,12 +16,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentMapper departmentMapper;
 
+    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public List<Department> getDepartments() {
         List<Department> list = departmentMapper.getDepartments();
         return list;
     }
 
+    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public Department getDepartment(Long id) {
         if(id ==null){

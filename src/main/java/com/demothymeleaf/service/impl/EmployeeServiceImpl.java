@@ -34,6 +34,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return list;
     }
 
+    @TargetDataSource(dataSourceKey = DataSourceKey.DB_SLAVE1)
     @Override
     public Employee get(Long id) {
         Employee emp = employeeMapper.get(id);
@@ -43,10 +44,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return emp;
     }
 
+
     @Override
     public void delete(Long id) {
         employeeMapper.delete(id);
     }
+
 
     @Override
     public void updateEmp(Employee employee) {
