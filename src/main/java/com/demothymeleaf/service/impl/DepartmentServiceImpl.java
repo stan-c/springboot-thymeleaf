@@ -1,7 +1,5 @@
 package com.demothymeleaf.service.impl;
 
-import com.demothymeleaf.annotation.TargetDataSource;
-import com.demothymeleaf.commons.DataSourceKey;
 import com.demothymeleaf.dao.DepartmentMapper;
 import com.demothymeleaf.entities.Department;
 import com.demothymeleaf.service.DepartmentService;

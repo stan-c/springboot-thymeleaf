@@ -1,3 +1,28 @@
 demo:
   datasource:
     master:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.10.194:3306/demo?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: test110
+      password: test@1234
+    slave1:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.10.194:3306/demo?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: test110
+      password: test@1234
+    slave2:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.10.194:3306/demo?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: test110
+      password: test@1234
+    other:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.10.194:3306/demo?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: test110
+      password: test@1234
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url:
+#    username:
+#    password:
